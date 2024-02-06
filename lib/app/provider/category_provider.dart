@@ -1,21 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
-import 'package:magento_ecom/app/graphql/query/popular_productSchema.dart';
 
 import '../../main_graphql.dart';
 import '../graphql/query/categorySchema.dart';
 
-class ProductProvider extends ChangeNotifier {
+class CategoryProvider extends ChangeNotifier {
   bool isLoading = false;
   var err;
   var res;
   EndPoint point = EndPoint();
-  ProductApi(context) async {
+  CategoryApi(context) async {
     isLoading = true;
     notifyListeners();
     ValueNotifier<GraphQLClient> _client = point.getClient(context);
     QueryResult result = await _client.value.mutate(MutationOptions(
-        document: gql(popular_ProductSchema.productJson), variables: {}));
+        document: gql(CategorySchema.categoryJson), variables: {}));
     // isLoading = false;
     if (result.hasException) {
       // Check if there is any exception raised.
