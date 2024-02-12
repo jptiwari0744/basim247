@@ -14,16 +14,21 @@ class productCarousel extends StatefulWidget {
 }
 
 class _productCarouselState extends State<productCarousel> {
-  CarouselController contrl = CarouselController();
+  CarouselController? contrl;
 
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       Provider.of<ProductProvider>(context, listen: false).ProductApi(context);
+      contrl = CarouselController();
+      Future.delayed(Duration(milliseconds: 100), () {
+        if (mounted && contrl != null) {
+          // Check if the widget is still mounted and controller is not null
+          contrl!.nextPage(duration: Duration(milliseconds: 2000));
+        }
+      });
     });
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      contrl.nextPage(duration: Duration(milliseconds: 2000));
-    });
+
     // TODO: implement initState
     super.initState();
   }
@@ -36,33 +41,40 @@ class _productCarouselState extends State<productCarousel> {
     double width = MediaQuery.of(context).size.width;
     return Consumer<ProductProvider>(
       builder: (context, key, child) {
+        // print('iddd${key.res['products'][0]['id']}');
         return key.isLoading == true
             ? Center(
                 child: CircularProgressIndicator(),
               )
-            : CarouselSlider.builder(
-                itemCount: key.res['products'].length,
-                itemBuilder: (context, index, realIndex) {
-                  return CardWidget(
-                    name: key.res['products'][index]['title'].toString(),
-                    price: key.res['products'][index]['price'].toString(),
-                    img: key.res['products'][index]['images'],
-                  );
-                },
-                carouselController: contrl,
-                options: CarouselOptions(
-                  onPageChanged: (index, reason) {
-                    setState(() {
-                      print(reason.toString());
-                    });
-                  },
-                  // enlargeCenterPage: true,
-                  viewportFraction: 0.45,
-                  autoPlay: true,
+            : key.res == null
+                ? Text('')
+                : CarouselSlider.builder(
+                    itemCount: key.res['products'].length,
+                    itemBuilder: (context, index, realIndex) {
+                      return Padding(
+                        padding: const EdgeInsets.only(left: 8.0, right: 8),
+                        child: CardWidget(
+                          name: key.res['products'][index]['title'].toString(),
+                          price: key.res['products'][index]['price'].toString(),
+                          img: key.res['products'][index]['images'],
+                          id: key.res['products'][index]['id'],
+                        ),
+                      );
+                    },
+                    carouselController: contrl,
+                    options: CarouselOptions(
+                      onPageChanged: (index, reason) {
+                        setState(() {
+                          print(reason.toString());
+                        });
+                      },
+                      // enlargeCenterPage: true,
+                      viewportFraction: 0.45,
+                      autoPlay: true,
 
-                  aspectRatio: 16 / 9,
-                ),
-              );
+                      aspectRatio: 16 / 9,
+                    ),
+                  );
       },
     );
   }

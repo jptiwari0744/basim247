@@ -127,7 +127,7 @@ class _SideMenuState extends State<SideMenu> {
                 child: Text(
                   _themeMenuIcon[0].title,
                   style: const TextStyle(
-                      color: Color.fromARGB(255, 29, 33, 56),
+                      color: Colors.purple,
                       fontSize: 17,
                       fontFamily: "Inter",
                       fontWeight: FontWeight.w600),

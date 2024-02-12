@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:magento_ecom/features/home/pages/home_page.dart';
+import 'package:magento_ecom/features/product_details/pages/category.dart';
 
 class FooterHomePage extends StatefulWidget {
   const FooterHomePage({super.key});
@@ -24,14 +26,13 @@ class _FooterHomePageState extends State<FooterHomePage> {
     });
   }
 
-
-
   @override
   Widget build(BuildContext context) {
+    Widget content = HomePage();
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     if (selectedTab == 1) {
-      // content = ProductPage();
+      content = Category();
     }
     if (selectedTab == 2) {
       // content = NewArrivalPage();
@@ -42,7 +43,7 @@ class _FooterHomePageState extends State<FooterHomePage> {
     }
     return Container(
       decoration: BoxDecoration(
-        color: const Color.fromARGB(255, 6, 20, 92).withOpacity(0.15),
+        color: Colors.white,
       ),
       child: Padding(
         padding: const EdgeInsets.symmetric(
@@ -52,37 +53,36 @@ class _FooterHomePageState extends State<FooterHomePage> {
         child: GNav(
           padding: const EdgeInsets.all(10),
           activeColor: Colors.white,
-          color: const Color.fromARGB(255, 6, 20, 92),
+          color: Colors.purple.shade300,
           selectedIndex: selectedTab, // Pass the selected index
           onTabChange: onBottomTab,
 
-          tabBackgroundColor:
-          const Color.fromARGB(255, 6, 20, 92).withOpacity(0.8),
+          tabBackgroundColor: Colors.purple.shade300,
           gap: 8,
           tabs: const [
             GButton(
               icon: Icons.home,
               text: 'Home',
-              textStyle: TextStyle(
-                  color: Colors.white, fontWeight: FontWeight.w600),
+              textStyle:
+                  TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
             ),
             GButton(
-              icon: Icons.local_offer_outlined,
-              text: "Offer",
-              textStyle: TextStyle(
-                  color: Colors.white, fontWeight: FontWeight.w600),
+              icon: Icons.category_outlined,
+              text: "Category",
+              textStyle:
+                  TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
             ),
             GButton(
               icon: Icons.shopping_cart,
               text: "Cart",
-              textStyle: TextStyle(
-                  color: Colors.white, fontWeight: FontWeight.w600),
+              textStyle:
+                  TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
             ),
             GButton(
               icon: Icons.person_outline,
               text: "Account",
-              textStyle: TextStyle(
-                  color: Colors.white, fontWeight: FontWeight.w600),
+              textStyle:
+                  TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
             ),
           ],
         ),

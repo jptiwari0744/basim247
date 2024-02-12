@@ -48,7 +48,7 @@ class _CategoryCardState extends State<CategoryCard> {
                         widget.img,
                         fit: BoxFit.fill,
                         height: 120,
-                        width: 120,
+                        width: MediaQuery.of(context).size.width * 0.29,
                       ))
                   // : Image.network(widget.img,
                   //     height: 170, width: 155, fit: BoxFit.fill)),
@@ -56,14 +56,16 @@ class _CategoryCardState extends State<CategoryCard> {
             ],
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 8.0),
+            padding: EdgeInsets.symmetric(
+                horizontal: MediaQuery.of(context).size.width * 0.01),
             child: Text(
               widget.name,
               style: TextStyle(fontSize: 11),
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 8.0),
+            padding: EdgeInsets.symmetric(
+                horizontal: MediaQuery.of(context).size.width * 0.01),
             child: Text(
               widget.price,
               style: TextStyle(fontSize: 11),

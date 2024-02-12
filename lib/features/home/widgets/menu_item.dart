@@ -15,18 +15,16 @@ class MenuItemModel {
   static List<MenuItemModel> menuItems = [
     MenuItemModel(
       title: "Home",
-      riveIcon: const Icon(Icons.home, color: Colors.black),
+      riveIcon: Icon(Icons.home, color: Colors.purple),
     ),
     MenuItemModel(
       title: "My Orders",
-      riveIcon: const Icon(Icons.shopping_bag,
-          color: Color.fromARGB(255, 95, 112, 192)),
+      riveIcon: Icon(Icons.shopping_bag, color: Colors.purple),
       children: menuItems2,
     ),
     MenuItemModel(
       title: "My Wishlist",
-      riveIcon:
-          const Icon(Icons.favorite, color: Color.fromARGB(255, 95, 112, 192)),
+      riveIcon: const Icon(Icons.favorite, color: Colors.purple),
       children: menuItems2,
     ),
   ];
@@ -34,29 +32,25 @@ class MenuItemModel {
   static List<MenuItemModel> menuItems2 = [
     MenuItemModel(
       title: "History",
-      riveIcon:
-          const Icon(Icons.history, color: Color.fromARGB(255, 95, 112, 192)),
+      riveIcon: const Icon(Icons.history, color: Colors.purple),
     ),
     MenuItemModel(
       title: "Notification",
-      riveIcon: const Icon(Icons.notifications_active,
-          color: Color.fromARGB(255, 95, 112, 192)),
+      riveIcon: const Icon(Icons.notifications_active, color: Colors.purple),
     ),
   ];
 
   static List<MenuItemModel> menuItems3 = [
     MenuItemModel(
       title: "Help",
-      riveIcon:
-          const Icon(Icons.chat, color: Color.fromARGB(255, 95, 112, 192)),
+      riveIcon: const Icon(Icons.chat, color: Colors.purple),
     ),
   ];
 
   static List<MenuItemModel> menuItems4 = [
     MenuItemModel(
       title: "Logout",
-      riveIcon:
-          const Icon(Icons.logout, color: Color.fromARGB(255, 95, 112, 192)),
+      riveIcon: Icon(Icons.logout, color: Colors.purple),
     ),
   ];
 }

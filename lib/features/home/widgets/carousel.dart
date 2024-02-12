@@ -60,13 +60,13 @@ class _CarouselWidgetState extends State<CarouselWidget> {
                 enlargeCenterPage: true,
                 viewportFraction: 1,
                 enableInfiniteScroll: true,
-                height: MediaQuery.of(context).size.height * 0.3,
+                height: 210,
                 autoPlay: true,
                 autoPlayCurve: Curves.easeInOut,
                 autoPlayAnimationDuration: Duration(milliseconds: 500),
                 aspectRatio: 16 / 9)),
         Positioned(
-            bottom: 10,
+            bottom: 20,
             // left: 100,
             child: Center(
               child:

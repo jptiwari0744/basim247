@@ -37,7 +37,7 @@ class MenuRow extends StatelessWidget {
           Text(
             menu.title,
             style: const TextStyle(
-              color: Color.fromARGB(255, 95, 112, 192),
+              color: Colors.purple,
               fontFamily: "Inter",
               fontWeight: FontWeight.w600,
               fontSize: 17,
@@ -56,7 +56,7 @@ class MenuRow extends StatelessWidget {
           height: 56,
           curve: const Cubic(0.2, 0.8, 0.2, 1),
           decoration: BoxDecoration(
-            color: const Color.fromARGB(255, 43, 50, 87),
+            color: Colors.purple.shade200,
             borderRadius: BorderRadius.circular(10),
           ),
         ),

@@ -1,11 +1,11 @@
 class popular_ProductSchema {
   static String productJson = """
 {
-  products(limit: 10, offset: 0){
+  products(){
     title
     price
     images
-    
+    id
   }
 }
 """;
